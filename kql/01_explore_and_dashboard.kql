@@ -1,0 +1,45 @@
+// =====================================================================
+// RetailCo 360 | Eventhouse eh_retail | KQL database | 01 - Explore + dashboard queries
+// Table: events_raw  
+// =====================================================================
+
+// ---- 0. Is data arriving?
+events_raw
+| summarize rows = count(), first_event = min(event_time), last_event = max(event_time)
+
+// ---- 1. Events in the last 15 minutes by type  
+events_raw
+| where event_time > ago(15m)
+| summarize events = count() by event_type
+| order by events desc
+
+// ---- 2. Live revenue per minute (time chart)
+events_raw
+| where event_type == "purchase"
+| summarize revenue = sum(amount) by bin(event_time, 1m)
+| order by event_time asc
+| render timechart
+
+// ---- 3. add_to_cart -> purchase conversion rate per channel, last hour (LIVE data)
+events_raw
+| where event_time > ago(1h) and event_type in ("add_to_cart", "purchase")
+| summarize carts = countif(event_type == "add_to_cart"),
+            purchases = countif(event_type == "purchase") by channel
+| extend conversion_rate_pct = round(100.0 * purchases / carts, 1)
+| order by conversion_rate_pct desc
+
+// ---- 3b. Same conversion query anchored on the newest event. 
+let anchor = toscalar(events_raw | summarize max(event_time));
+events_raw
+| where event_time > anchor - 1h and event_type in ("add_to_cart", "purchase")
+| summarize carts = countif(event_type == "add_to_cart"),
+            purchases = countif(event_type == "purchase") by channel
+| extend conversion_rate_pct = round(100.0 * purchases / carts, 1)
+| order by conversion_rate_pct desc
+
+// ---- 4. Revenue by category (bar chart tile)
+events_raw
+| where event_type == "purchase"
+| summarize revenue = sum(amount), purchases = count() by category
+| order by revenue desc
+| render columnchart

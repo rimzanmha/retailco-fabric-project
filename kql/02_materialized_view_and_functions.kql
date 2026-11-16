@@ -1,0 +1,42 @@
+// =====================================================================
+// RetailCo 360 | Eventhouse eh_retail | 02 - Materialized view + stored functions
+// =====================================================================
+
+// ---- Materialized view: running purchase totals per category.
+.create materialized-view with (backfill=true) CategoryRevenue on table events_raw
+{
+    events_raw
+    | where event_type == "purchase"
+    | summarize revenue = sum(amount), purchases = count() by category
+}
+
+// ---- Materialized_view() returns merged materialized + new unprocessed rows.
+materialized_view("CategoryRevenue")
+| order by revenue desc
+
+// ---- Stored function: top categories in a time window
+.create-or-alter function with (docstring = "Top 5 categories by purchase revenue in a trailing window", folder = "retail")
+TopCategories(window: timespan)
+{
+    events_raw
+    | where event_type == "purchase" and event_time > ago(window)
+    | summarize revenue = sum(amount) by category
+    | top 5 by revenue
+}
+
+// ---- Calling the Stored function
+TopCategories(1h)
+
+// ---- Bonus: a reusable conversion function that a dashboard tile can call with a parameter
+.create-or-alter function with (docstring = "Cart-to-purchase conversion by channel", folder = "retail")
+ConversionByChannel(window: timespan)
+{
+    events_raw
+    | where event_time > ago(window) and event_type in ("add_to_cart", "purchase")
+    | summarize carts = countif(event_type == "add_to_cart"),
+                purchases = countif(event_type == "purchase") by channel
+    | extend conversion_rate_pct = round(100.0 * purchases / carts, 1)
+}
+
+// ----30 days of raw events is plenty for a live ops dashboard.
+.alter-merge table events_raw policy retention softdelete = 30d
