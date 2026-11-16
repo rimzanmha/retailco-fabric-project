@@ -1,0 +1,35 @@
+﻿// =====================================================================
+// RetailCo 360 | Power BI semantic model | DAX measures
+// =====================================================================
+
+Total Revenue = SUM ( fact_sales[net_amount] )
+
+Total Units = SUM ( fact_sales[quantity] )
+
+Orders = DISTINCTCOUNT ( fact_sales[order_id] )
+
+Avg Order Value = DIVIDE ( [Total Revenue], [Orders] )
+
+Gross Margin =
+SUMX (
+    fact_sales,
+    fact_sales[net_amount] - fact_sales[quantity] * RELATED ( dim_product[unit_cost] )
+)
+
+Gross Margin % = DIVIDE ( [Gross Margin], [Total Revenue] )
+
+Revenue YTD = TOTALYTD ( [Total Revenue], dim_date[full_date] )
+
+Revenue PM = CALCULATE ( [Total Revenue], DATEADD ( dim_date[full_date], -1, MONTH ) )
+
+Revenue MoM % = DIVIDE ( [Total Revenue] - [Revenue PM], [Revenue PM] )
+
+Revenue % of Total =
+DIVIDE ( [Total Revenue], CALCULATE ( [Total Revenue], ALLSELECTED () ) )
+
+Online Share % =
+DIVIDE (
+    CALCULATE ( [Total Revenue], fact_sales[channel] = "Online" ),
+    [Total Revenue]
+)
+
