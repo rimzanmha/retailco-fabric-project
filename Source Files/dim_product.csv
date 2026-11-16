@@ -1,0 +1,28 @@
+product_id,product_name,category,unit_price,unit_cost
+101,Wireless Earbuds,Electronics,2499,1741.97
+102,Smartphone,Electronics,18999,10558.74
+103,Power Bank,Electronics,1299,796.62
+104,Bluetooth Speaker,Electronics,2999,1803.41
+105,Smart Watch,Electronics,4999,3596.22
+106,USB-C Cable,Electronics,399,281.55
+107,Ceramic Mug,Home,299,225.81
+108,Table Lamp,Home,1199,683.43
+109,Cushion Cover,Home,499,322.87
+110,Wall Clock,Home,899,500.61
+111,Storage Box,Home,699,419.6
+112,Cotton T-Shirt,Apparel,699,465.7
+113,Denim Jeans,Apparel,1999,1111.65
+114,Running Shoes,Apparel,2799,1667.46
+115,Hoodie,Apparel,1499,1048.51
+116,Baseball Cap,Apparel,499,336.99
+117,Socks Pack,Apparel,299,179.61
+118,Coffee Beans 1kg,Grocery,899,616.29
+119,Green Tea 100g,Grocery,249,183.31
+120,Olive Oil 1L,Grocery,749,413.07
+121,Dark Chocolate,Grocery,199,146.33
+122,Almonds 500g,Grocery,549,390.1
+123,Face Wash,Beauty,349,219.26
+124,Sunscreen SPF50,Beauty,599,350.87
+125,Lip Balm,Beauty,149,114.75
+126,Shampoo 400ml,Beauty,449,281.71
+127,Perfume 50ml,Beauty,1999,1142.09
