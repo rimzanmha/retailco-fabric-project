@@ -14,6 +14,9 @@ RetailCo 360 is an end-to-end retail analytics platform that I built on Microsof
 ## Dashboard
 <img width="750" height="400" alt="image" src="https://github.com/user-attachments/assets/c2acfed8-a5f2-4954-9dfd-4a8250c9b22b" />
 
+## Real-Tme Dashboard
+<img width="750" height="190" alt="Events" src="https://github.com/user-attachments/assets/05f403bb-841e-4cbe-a8ea-530aff3949f9" />
+
 ## Business Questions Answered
 
 RetailCo runs five stores and an online channel, and leadership wanted one trusted version of the numbers plus a live view of orders. The project answers:
@@ -40,6 +43,8 @@ Source: Synthetic retail data supplied with a Microsoft Fabric training capstone
 ## Table Structure
 Warehouse star schema: fact_sales joined to dim_date, dim_store, dim_product, dim_customer
 Fact Table - sales, Dimension Tables - dim_store (including region and city), dim_product (including category), dim_customer, dim_date
+<img width="750" height="400" alt="image" src="https://github.com/user-attachments/assets/a2e1016f-838f-4e13-96e1-e51378d8d8e1" />
+
 
 ### Sales Table (`silver_sales`)
 
@@ -122,7 +127,7 @@ Fact Table - sales, Dimension Tables - dim_store (including region and city), di
 
 ## Author
 
-**Ahamed Rimzan** Aspiring Data Engineer, Calgary, AB. 4+ years across data analytics, quality assurance, and business-critical reporting. Microsoft Certified: Fabric Analytics Engineer Associate (DP-600). Post-Graduate Diploma in Business Analytics, SAIT (GPA 4.0).
+**Ahamed Rimzan** Aspiring Data Engineer, Calgary, AB. 4+ years across data analytics, quality assurance, and business-critical reporting. Microsoft Certified: Fabric Analytics Engineer Associate (DP-600). Post-Graduate Diploma in Data Analytics, SAIT (GPA 4.0).
 
 - LinkedIn: https://www.linkedin.com/in/ahamed-rimzan-36483720/
 - GitHub: https://github.com/rimzanmha
