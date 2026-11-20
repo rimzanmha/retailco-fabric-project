@@ -9,8 +9,7 @@ RetailCo 360 is an end-to-end retail analytics platform that I built on Microsof
 4. No Real-Time Visibility: Limited ability to monitor incoming orders as they happen.
 
 ## Architecture: 
-<img width="1536" height="1024" alt="retailco-architecture" src="https://github.com/user-attachments/assets/f0f9cf49-fe3e-42d2-8858-344463e932ed" />
-
+<img width="1535" height="1024" alt="retailco-architecture" src="https://github.com/user-attachments/assets/0cdf96ff-f99c-43a2-97f4-46eaaa46c7f8" />
 
 ## Dashboard
 <img width="1102" height="627" alt="image" src="https://github.com/user-attachments/assets/c2acfed8-a5f2-4954-9dfd-4a8250c9b22b" />
