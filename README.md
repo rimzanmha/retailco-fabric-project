@@ -37,7 +37,7 @@ Source: Synthetic retail data supplied with a Microsoft Fabric training capstone
 | Raw sales file | 6,120 rows |
 | After removing 120 duplicate orders | 6,000 orders (kept in `silver_sales` and `fact_sales`) |
 | Stores / Products / Customers | 5 / 27 / 200 |
-| Order dates | Jan 2026 – mid-2026 (synthetic) |
+| Order dates | Jan 2026 – mid-2026 |
 | Real-time event table (`events_raw`) | 15,120 events (2026-06-13 to 2026-11-10) |
 
 ## Table Structure
